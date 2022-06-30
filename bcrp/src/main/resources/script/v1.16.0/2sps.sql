@@ -1,0 +1,85 @@
+-- INICIO CPASCO
+
+--------------------------------------------------------
+--  DELETE STORED PROCEDURES
+--------------------------------------------------------
+DROP PROCEDURE "PCBCRP"."SP_BCR_OPERACION_DELOPERACION";
+
+--------------------------------------------------------
+--  DDL for Procedure SP_BCR_OPERACION_DELOPERACION
+--------------------------------------------------------
+
+create PROCEDURE "PCBCRP"."SP_BCR_OPERACION_DELOPERACION" (
+P_IDCARGA 					IN VARCHAR2,
+P_TIPOPROCESO				IN VARCHAR2,
+P_FECHAPROCESO 				IN DATE
+)
+
+AS
+
+V_COUNT 					  NUMBER;
+V_COUNT_OTFX 				NUMBER;
+V_IDPRODUCTO				VARCHAR2(20);
+V_IDPRODUCTO_OTFX   VARCHAR2(20);
+
+
+BEGIN
+
+	SELECT COUNT(ID) INTO V_COUNT
+	FROM CARGA
+	WHERE ID = P_IDCARGA AND TIPOCARGA = '7';
+  
+    
+	SELECT COUNT(ID) INTO V_COUNT_OTFX
+	FROM CARGA
+	WHERE ID = P_IDCARGA AND TIPOCARGA = '16';
+
+	-- obtenamos el id de producto IRC
+	SELECT ID INTO V_IDPRODUCTO
+	FROM PRODUCTO 
+	WHERE CODIGO = 'IRC';
+	
+	-- obtenamos el id de producto OTFX
+	SELECT ID INTO V_IDPRODUCTO_OTFX
+	FROM PRODUCTO 
+	WHERE CODIGO = 'OTFX';
+
+	IF (V_COUNT > 0) THEN
+
+		DELETE FROM OPERACION     
+		WHERE 
+			TIPOPROCESO = P_TIPOPROCESO 
+			AND ID_PRODUCTO = V_IDPRODUCTO
+			AND TO_CHAR(FECHAMOVIMIENTO, 'dd/mm/yyyy') = TO_CHAR(P_FECHAPROCESO, 'dd/mm/yyyy')   	
+			AND CREADO_POR != 'MOD_FERIADO';
+
+	ELSE
+    IF (V_COUNT_OTFX > 0) THEN
+      DELETE FROM OPERACION     
+      WHERE 
+        TIPOPROCESO = P_TIPOPROCESO 
+        AND ID_PRODUCTO = V_IDPRODUCTO_OTFX
+        AND TO_CHAR(FECHAMOVIMIENTO, 'dd/mm/yyyy') = TO_CHAR(P_FECHAPROCESO, 'dd/mm/yyyy')   	
+        AND CREADO_POR != 'MOD_FERIADO'; 
+    ELSE
+      DELETE FROM OPERACION     
+      WHERE 
+        TIPOPROCESO = P_TIPOPROCESO 
+        AND ID_PRODUCTO != V_IDPRODUCTO AND ID_PRODUCTO != V_IDPRODUCTO_OTFX
+        AND TO_CHAR(FECHAMOVIMIENTO, 'dd/mm/yyyy') = TO_CHAR(P_FECHAPROCESO, 'dd/mm/yyyy')   	
+        AND CREADO_POR != 'MOD_FERIADO'; 
+    END IF;
+	END IF;
+  COMMIT;
+
+END;
+
+/
+
+--------------------------------------------------------
+--  GRANT STORED PROCEDURES
+--------------------------------------------------------
+
+GRANT EXECUTE ON "PCBCRP"."SP_BCR_OPERACION_DELOPERACION" TO "APP_PCBCRP";
+
+-- FIN CPASCO

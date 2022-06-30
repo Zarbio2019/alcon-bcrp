@@ -1,0 +1,2625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+                 version="2.1">
+	<!-- JPA Named Stored Procedures -->
+
+	<named-stored-procedure-query name="SP_BCR_CLIENTE_LISTAR" procedure-name="PCBCRP.SP_BCR_CLIENTE_LISTAR">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGO" />
+		<parameter class="java.lang.String" mode="IN" name="P_NOMBRE" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOCLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_CLIENTENOREGISTRADO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ClienteTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping name="ClienteTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.ClienteTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="codigo" class="java.lang.String" />
+			<column name="nombre" class="java.lang.String" />
+			<column name="entidad" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="altamira" class="java.lang.String" />
+			<column name="plaza" class="java.lang.String" />
+			<column name="sector" class="java.lang.String" />
+			<column name="nombrecorto" class="java.lang.String" />
+			<column name="rechazarcarga" class="java.lang.String" />	
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="codigoswift" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.Integer" />
+			<column name="numerodocumento" class="java.lang.String" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="paisresidenciadesc" class="java.lang.String" />
+			<column name="riesgopaisdesc" class="java.lang.String" />
+			<column name="rechazarcargadesc" class="java.lang.String" />
+			<column name="tipoclientedesc" class="java.lang.String" />
+			<column name="tipodocumentodesc" class="java.lang.String" />
+
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_PRODUCTO_LISTAR" procedure-name="PCBCRP.SP_BCR_PRODUCTO_LISTAR">
+		<parameter class="java.lang.String" mode="IN" name="P_DESCRIPCION" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ProductoTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ProductoTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.ProductoTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="codigo" class="java.lang.String" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="nombreproducto" class="java.lang.String" />
+			<column name="codigobcr" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />	
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="rechazarcarga" class="java.lang.String" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="tipoentregadesc" class="java.lang.String" />
+
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_SALDOCONTABLE_LISTAR" procedure-name="PCBCRP.SP_BCR_SALDOCONTABLE_LISTAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>SaldoContableTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="SaldoContableTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.SaldoContableTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="iddivisa" class="java.lang.String" />
+			<column name="idoficina" class="java.lang.String" />
+			<column name="fecha" class="java.util.Calendar" />
+			<column name="importe" class="java.math.BigDecimal" />
+			<column name="divisacodigo" class="java.lang.String" />	
+			<column name="oficinacodigo" class="java.lang.String" />
+			<column name="codigoestado" class="java.lang.Integer" />
+
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_OFICINA_LISTAR" procedure-name="PCBCRP.SP_BCR_OFICINA_LISTAR">
+		<parameter class="java.lang.String" mode="IN" name="P_DESCRIPCION" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>OficinaTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="OficinaTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.OficinaTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="codigo" class="java.lang.String" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="posicioncambiaria" class="java.lang.String" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="posicioncambiariadesc" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+
+	<named-stored-procedure-query name="SP_BCR_POSICION_CAMBIARIA" procedure-name="PCBCRP.SP_BCR_POSICION_CAMBIARIA">
+		<parameter class="java.lang.String" mode="IN" name="P_DESCRIPCION" />
+		<parameter class="java.lang.String" mode="IN" name="P_RUBRO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PADRE_RUBRO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>PosicionCambiariaTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping name="PosicionCambiariaTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.PosicionCambiariaTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="codigo" class="java.lang.String" />
+			<column name="rubro" class="java.lang.String" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="idproducto" class="java.lang.Integer" />
+			<column name="codigobcr" class="java.lang.String" />	
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />	
+			<column name="residentedescripcion" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipoentregadescripcion" class="java.lang.String" />
+			<column name="callput" class="java.lang.String" />
+			<column name="tipocallputdescripcion" class="java.lang.String" />
+			<column name="padrerubro" class="java.lang.String" />
+			<column name="editar" class="java.lang.Boolean" />
+			<column name="detalle" class="java.lang.Boolean" />
+			<column name="descripcionc2" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_LISTARINTERNA" procedure-name="PCBCRP.SP_BCR_OPERACION_LISTARINTERNA">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHACONTRATACION" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>OperacionInternaTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="OperacionInternaTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.OperacionInternaTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="idcarga" class="java.lang.String" />
+			<column name="fechacontratacion" class="java.util.Calendar" />
+			<column name="idproducto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="productocodigo" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="divisaentradacodigo" class="java.lang.String" />
+			<column name="divisasalidacodigo" class="java.lang.String" />
+			<column name="tipooperaciondesc" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_LISTAR" procedure-name="PCBCRP.SP_BCR_OPERACION_LISTAR">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOREPORTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_NUMEROOPERACION" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHACONTRATACION" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAVALOR" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAVENCIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDPRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOCLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_NOMBRECLIENTE" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_IMPORTEUSDINICIAL" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_IMPORTEUSDFINAL" />
+		<parameter class="java.lang.String" mode="IN" name="P_OBSERVACIONES" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_INTENCIONDECONTRATACION" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>OperacionTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="OperacionTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.OperacionTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="idcarga" class="java.lang.String" />
+			<column name="fechacontratacion" class="java.util.Calendar" />
+			<column name="idproducto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="mensajeerror" class="java.lang.String" />
+			<column name="correlativo" class="java.lang.String" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="productocodigo" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="divisaentradacodigo" class="java.lang.String" />
+			<column name="divisasalidacodigo" class="java.lang.String" />
+			<column name="tipooperaciondesc" class="java.lang.String" />
+			<column name="tipoprocesodesc" class="java.lang.String" />
+			<column name="estadodesc" class="java.lang.String" />
+			<column name="divisaprimacodigo" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_TASAINTERES_LISTAR" procedure-name="PCBCRP.SP_BCR_TASAINTERES_LISTAR">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOREPORTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_NUMEROOPERACION" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDPRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOCLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_NOMBRECLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_OBSERVACIONES" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>TasaInteresTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="TasaInteresTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.OperacionTasaDTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idCliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.Integer" />
+			<column name="documentocliente" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="divisaprimadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="estadodesc" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="tipoprocesodesc" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="monedaextranjeradescripcion" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="recibetfija" class="java.lang.String" />
+			<column name="recibeidentificadorfrecuencia" class="java.lang.String" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatfija" class="java.lang.String" />
+			<column name="pagaidentificadorfrecuencia" class="java.lang.String" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_OPE_DERIVADO_LISTAR" procedure-name="PCBCRP.SP_BCR_OPE_DERIVADO_LISTAR">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOREPORTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_NUMEROOPERACION" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDPRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOCLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_NOMBRECLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_OBSERVACIONES" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>OperacionDerivadoDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="OperacionDerivadoDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.OperacionOtrosDerivadosDTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="iddivisa" class="java.lang.String" />
+			<column name="divisadescripcion" class="java.lang.String" />
+			<column name="importedivisa" class="java.math.BigDecimal" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.Integer" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="documentocliente" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="tiposubyacente" class="java.lang.String" />
+			<column name="descripcionsubyacente" class="java.lang.String" />
+			<column name="fechaefectiva" class="java.util.Calendar" />
+			<column name="fechatermino" class="java.util.Calendar" />
+			<column name="fechareporte" class="java.util.Calendar" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="preciopactado" class="java.math.BigDecimal" />
+			<column name="commoditytamanocontratounid" class="java.math.BigDecimal" />
+			<column name="commoditytamanounidmedida" class="java.lang.String" /> 
+			<column name="cdscupon" class="java.math.BigDecimal" /> 
+			<column name="cdstradeddpread" class="java.math.BigDecimal" /> 
+			<column name="cdsfrecpagomeses" class="java.lang.String" />
+			<column name="trstipooperacion" class="java.lang.String" />
+			<column name="trstasa" class="java.math.BigDecimal" /> 
+			<column name="trsfija" class="java.lang.String" />
+			<column name="trsfrepagomes" class="java.lang.String" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="estilo" class="java.lang.String" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			<column name="tipoaccion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="tipoprocesodesc" class="java.lang.String" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+		
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_FERIADO_LISTAR" procedure-name="PCBCRP.SP_BCR_FERIADO_LISTAR">
+		<parameter class="java.lang.Integer" mode="IN" name="P_ANIO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_MES" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>FeriadoTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="FeriadoTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.FeriadoTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="tipo" class="java.lang.String" />
+			<column name="fecha" class="java.util.Calendar" />
+			<column name="operacion" class="java.lang.String" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="tipoferiadodesc" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_FERIADO_UPD" procedure-name="PCBCRP.SP_BCR_OPERACION_FERIADO_UPD">
+		<parameter class="java.lang.String" mode="IN" name="P_IDFERIADO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_CODIGOESTADO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOMODIFICACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_FERIADO_COPIAR" procedure-name="PCBCRP.SP_BCR_FERIADO_COPIAR">
+		<parameter class="java.lang.String" mode="IN" name="P_TIPO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_ANIO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCREACION" />
+	</named-stored-procedure-query>
+	
+	<!-- PARAMETROS -->
+	<named-stored-procedure-query name="SP_BCR_PARAMETRO_LISTAR" procedure-name="PCBCRP.SP_BCR_PARAMETRO_LISTAR">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DETALLE_ID" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ParametroTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_PARAMETRO_LISTARVALORES" procedure-name="PCBCRP.SP_BCR_PARAMETRO_LISTARVALORES">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DETALLE_ID" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ValorParametroDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ValorParametroDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.custom.response.ValorParametroResponse">
+			<column name="idvalorparametro" class="java.lang.String" />
+			<column name="orden" class="java.lang.Integer" />
+			<column name="valorparametro" class="java.lang.String" />
+			<column name="iddetalleparametro" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+		<sql-result-set-mapping	name="ParametroTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.ParametroTableDTO">
+			<column name="idparametro" class="java.lang.String" />
+			<column name="codigoparametro" class="java.lang.String" />
+			<column name="parametrodescripcion" class="java.lang.String" />
+			<column name="iddetalleparametro" class="java.lang.String" />
+			<column name="codigodetalleparametro" class="java.lang.String" />
+			<column name="descripciondetalleparametro" class="java.lang.String" />
+			<column name="visibledetalleparametro" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	<!-- REPORTES -->
+	<named-stored-procedure-query name="SP_BCR_REPORTE1_LISTAR" procedure-name="PCBCRP.SP_BCR_REPORTE1_LISTAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHACONTRATACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteUnoDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE1_LISTAR_C2" procedure-name="PCBCRP.SP_BCR_REPORTE1_LISTAR_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHACONTRATACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteUnoC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE1_EXCEL" procedure-name="PCBCRP.SP_BCR_REPORTE1_EXCEL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHACONTRATACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteUnoExcelDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE1_EXCEL_C2" procedure-name="PCBCRP.SP_BCR_REPORTE1_EXCEL_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHACONTRATACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteUnoExcelC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE2_LISTAR" procedure-name="PCBCRP.SP_BCR_REPORTE2_LISTAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteDosDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE2_LISTAR_C2" procedure-name="PCBCRP.SP_BCR_REPORTE2_LISTAR_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteDosC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE2_EXCEL" procedure-name="PCBCRP.SP_BCR_REPORTE2_EXCEL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteDosExcelDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE2_EXCEL_C2" procedure-name="PCBCRP.SP_BCR_REPORTE2_EXCEL_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteDosExcelC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE3_LISTAR" procedure-name="PCBCRP.SP_BCR_REPORTE3_LISTAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteTresDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE3_LISTAR_C2" procedure-name="PCBCRP.SP_BCR_REPORTE3_LISTAR_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_TIPOVISTA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteTresC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE3_EXCEL" procedure-name="PCBCRP.SP_BCR_REPORTE3_EXCEL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteTresExcelDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE3_EXCEL_C2" procedure-name="PCBCRP.SP_BCR_REPORTE3_EXCEL_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_DIVISA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteTresExcelC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteUnoDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteUnoDTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="divisaprimadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="monedaextranjeradescripcion" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteUnoC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteUnoC2DTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.Integer" />
+			<column name="documentocliente" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="divisaprimadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="monedaextranjeradescripcion" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="recibetfija" class="java.lang.String" />
+			<column name="recibeidentificadorfrecuencia" class="java.lang.String" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatfija" class="java.lang.String" />
+			<column name="pagaidentificadorfrecuencia" class="java.lang.String" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			<column name="tipoaccion" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteDosDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteDosDTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="divisaprimadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="monedaextranjeradescripcion" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteDosC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteDosC2DTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.Integer" />
+			<column name="documentocliente" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="divisaprimadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="monedaextranjeradescripcion" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="recibetfija" class="java.lang.String" />
+			<column name="recibeidentificadorfrecuencia" class="java.lang.String" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatfija" class="java.lang.String" />
+			<column name="pagaidentificadorfrecuencia" class="java.lang.String" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			<column name="tipoaccion" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteTresDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteTresDTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="divisaprimadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="monedaextranjeradescripcion" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteTresC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteTresC2DTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.Integer" />
+			<column name="documentocliente" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="divisaprimadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="monedaextranjeradescripcion" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="recibetfija" class="java.lang.String" />
+			<column name="recibeidentificadorfrecuencia" class="java.lang.String" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatfija" class="java.lang.String" />
+			<column name="pagaidentificadorfrecuencia" class="java.lang.String" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			<column name="tipoaccion" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteUnoExcelDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteUnoExcelDTO">
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteUnoExcelC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteUnoExcelC2DTO">
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteDosExcelDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteDosExcelDTO">
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+		<sql-result-set-mapping	name="ReporteDosExcelC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteDosExcelC2DTO">
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteTresExcelDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteTresExcelDTO">
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="estado" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteTresExcelC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteTresExcelC2DTO">
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="estado" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_INICIALIZAR" procedure-name="PCBCRP.SP_BCR_MPC_INICIALIZAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALCULOCOBERTURA" procedure-name="PCBCRP.SP_BCR_MPC_CALCULOCOBERTURA">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALIMPORTEACTUAL" procedure-name="PCBCRP.SP_BCR_MPC_CALIMPORTEACTUAL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALIMPORTEDELTA" procedure-name="PCBCRP.SP_BCR_MPC_CALIMPORTEDELTA">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALIMPORTEOPCIONES" procedure-name="PCBCRP.SP_BCR_MPC_CALIMPORTEOPCIONES">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALCOMPRAVENTADIA" procedure-name="PCBCRP.SP_BCR_MPC_CALCOMPRAVENTADIA">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALPOSESTRUCNIV_1" procedure-name="PCBCRP.SP_BCR_MPC_CALPOSESTRUCNIV_1">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_RUBRO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALPOSESTRUCNIV_2" procedure-name="PCBCRP.SP_BCR_MPC_CALPOSESTRUCNIV_2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_RUBRO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALCULOCOMPRAS" procedure-name="PCBCRP.SP_BCR_MPC_CALCULOCOMPRAS">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALCULOVENTAS" procedure-name="PCBCRP.SP_BCR_MPC_CALCULOVENTAS">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_SUMAPOSCAMBIARIA" procedure-name="PCBCRP.SP_BCR_MPC_SUMAPOSCAMBIARIA">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALPOSESTRUCCOBERT" procedure-name="PCBCRP.SP_BCR_MPC_CALPOSESTRUCCOBERT">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_RUBRO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_SUMADETOTALES" procedure-name="PCBCRP.SP_BCR_MPC_SUMADETOTALES">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_HIJO" />
+		<parameter class="java.lang.String" mode="IN" name="P_PADRE" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALPOSLARGDERIVCIER" procedure-name="PCBCRP.SP_BCR_MPC_CALPOSLARGDERIVCIER">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALPOSCORGDERIVCIER" procedure-name="PCBCRP.SP_BCR_MPC_CALPOSCORGDERIVCIER">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALTOTPOSCAMBIOBAL" procedure-name="PCBCRP.SP_BCR_MPC_CALTOTPOSCAMBIOBAL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MPC_CALPOSCAMBIOGLOBAL" procedure-name="PCBCRP.SP_BCR_MPC_CALPOSCAMBIOGLOBAL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE4_LISTAR" procedure-name="PCBCRP.SP_BCR_REPORTE4_LISTAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CIRCULAR" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuatroDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE4_ID" procedure-name="PCBCRP.SP_BCR_REPORTE4_ID">
+		<parameter class="java.lang.String" mode="IN" name="P_ID" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuatroDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE4_EXCEL" procedure-name="PCBCRP.SP_BCR_REPORTE4_EXCEL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CIRCULAR" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuatroExcelDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE4_OPERACIONES" procedure-name="PCBCRP.SP_BCR_REPORTE4_OPERACIONES">
+		<parameter class="java.lang.String" mode="IN" name="P_IDPOSICIONCAMBIARIA" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuatroOperacionesDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE4_ANEXO8_IRC" procedure-name="PCBCRP.SP_BCR_REPORTE4_ANEXO8_IRC">
+		<parameter class="java.lang.String" mode="IN" name="P_IDPOSICIONCAMBIARIA" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuatroAnexo8IrcDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE4_ANEXO8" procedure-name="PCBCRP.SP_BCR_REPORTE4_ANEXO8">
+		<parameter class="java.lang.String" mode="IN" name="P_IDPOSICIONCAMBIARIA" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuatroAnexo8DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteCuatroExcelDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteCuatroExcelDTO">
+			<column name="codigo" class="java.lang.String" />
+			<column name="rubro" class="java.lang.String" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="importeactual" class="java.math.BigDecimal" />
+			<column name="importedelta" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	
+	<sql-result-set-mapping	name="ReporteCuatroDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteCuatroDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="fecha" class="java.util.Calendar" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="codigocompuesto" class="java.lang.String" />
+			<column name="idposicioncambiaria" class="java.lang.String" />
+			<column name="codigo" class="java.lang.String" />
+			<column name="rubro" class="java.lang.String" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="importeactual" class="java.math.BigDecimal" />
+			<column name="importedelta" class="java.math.BigDecimal" />
+			<column name="editar" class="java.lang.String" />
+			<column name="detalle" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteCuatroOperacionesDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteCuatroDetalleDTO">
+			<column name="producto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="cliente" class="java.lang.String" />
+			<column name="nombre" class="java.lang.String" />
+			<column name="tipo" class="java.lang.String" />
+			<column name="diventrada" class="java.lang.String" />
+			<column name="divsalida" class="java.lang.String" />
+			<column name="impentrada" class="java.math.BigDecimal" />
+			<column name="impsalida" class="java.math.BigDecimal" />
+			<column name="tipocambio" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="contratacion" class="java.lang.String" />
+			<column name="valor" class="java.lang.String" />
+			<column name="vencimiento" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="tipocliente" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteCuatroAnexo8DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteCuatroDetalleDTO">
+			<column name="producto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="cliente" class="java.lang.String" />
+			<column name="nombre" class="java.lang.String" />
+			<column name="tipo" class="java.lang.String" />
+			<column name="diventrada" class="java.lang.String" />
+			<column name="divsalida" class="java.lang.String" />
+			<column name="impentrada" class="java.math.BigDecimal" />
+			<column name="impsalida" class="java.math.BigDecimal" />
+			<column name="tipocambio" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="contratacion" class="java.lang.String" />
+			<column name="valor" class="java.lang.String" />
+			<column name="vencimiento" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="tipocliente" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<sql-result-set-mapping	name="ReporteCuatroAnexo8IrcDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteCuatroDetalleDTO">
+			<column name="producto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="cliente" class="java.lang.String" />
+			<column name="nombre" class="java.lang.String" />
+			<column name="tipo" class="java.lang.String" />
+			<column name="diventrada" class="java.lang.String" />
+			<column name="divsalida" class="java.lang.String" />
+			<column name="impentrada" class="java.math.BigDecimal" />
+			<column name="impsalida" class="java.math.BigDecimal" />
+			<column name="tipocambio" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="contratacion" class="java.lang.String" />
+			<column name="valor" class="java.lang.String" />
+			<column name="vencimiento" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="tipocliente" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE4_IDPC" procedure-name="PCBCRP.SP_BCR_REPORTE4_IDPC">
+		<parameter class="java.lang.String" mode="IN" name="P_IDPOSICIONCAMBIARIA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuatroPosicionCambiariaDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteCuatroPosicionCambiariaDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteCuatroPosicionCambiariaDTO">
+			<column name="idposicioncambiaria" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE5_LISTAR_C2" procedure-name="PCBCRP.SP_BCR_REPORTE5_LISTAR_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCincoC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteCincoC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteCincoC2DTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="codigodivisaentrada" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="codigodivisasalida" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechaejercicio" class="java.util.Calendar"/>
+			<column name="callput" class="java.lang.String" />
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="codigodivisaprima" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="iddelta" class="java.lang.String" />
+			<column name="deltad" class="java.math.BigDecimal" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="importedelta" class="java.math.BigDecimal" />
+			<column name="cobertura" class="java.math.BigDecimal" />
+			<column name="fechaproceso" class="java.util.Calendar" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="estado" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE5_UPDATEDELTA_C2" procedure-name="PCBCRP.SP_BCR_REPORTE5_UPDATEDELTA_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCincoUpdateDeltaC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteCincoUpdateDeltaC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteCincoUpdateDeltaC2DTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="fechaproceso" class="java.util.Calendar"/>
+			<column name="deltas" class="java.math.BigDecimal" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="cobertura" class="java.math.BigDecimal" />
+			<column name="estado" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE6_LISTAR" procedure-name="PCBCRP.SP_BCR_REPORTE6_LISTAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteSeisDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteSeisDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteSeisDTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="codigodivisaentrada" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="codigodivisasalida" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechaejercicio" class="java.util.Calendar"/>
+			<column name="callput" class="java.lang.String" />
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="codigodivisaprima" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="iddelta" class="java.lang.String" />
+			<column name="deltad" class="java.math.BigDecimal" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="importedelta" class="java.math.BigDecimal" />
+			<column name="cobertura" class="java.math.BigDecimal" />
+			<column name="fechaproceso" class="java.util.Calendar" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="estado" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE6_UPDATEDELTA" procedure-name="PCBCRP.SP_BCR_REPORTE6_UPDATEDELTA">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteSeisUpdateDeltaDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteSeisUpdateDeltaDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteSeisUpdateDeltaDTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="fechaproceso" class="java.util.Calendar"/>
+			<column name="deltas" class="java.math.BigDecimal" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="cobertura" class="java.math.BigDecimal" />
+			<column name="estado" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE6_LISTAR_C2" procedure-name="PCBCRP.SP_BCR_REPORTE6_LISTAR_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteSeisC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteSeisC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteSeisC2DTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="fechacontratacion" class="java.util.Calendar"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.Integer" />
+			<column name="documentocliente" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="divisaprimadescripcion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="monedaextranjeradescripcion" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="recibetfija" class="java.lang.String" />
+			<column name="recibeidentificadorfrecuencia" class="java.lang.String" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatfija" class="java.lang.String" />
+			<column name="pagaidentificadorfrecuencia" class="java.lang.String" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			<column name="tipoaccion" class="java.lang.String" />
+			
+			<column name="strikerate" class="java.math.BigDecimal" />
+			<column name="benchmark" class="java.lang.String" />
+			<column name="frecuenciabenchmark" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE6_EXCEL_C2" procedure-name="PCBCRP.SP_BCR_REPORTE6_EXCEL_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteSeisExcelC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteSeisExcelC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteSeisExcelC2DTO">
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String"/>
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="divisaentradadescripcion" class="java.lang.String" />
+			<column name="divisasalidadescripcion" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="tipoaccion" class="java.lang.String" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE7_LISTAR_C2" procedure-name="PCBCRP.SP_BCR_REPORTE7_LISTAR_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteSieteC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteSieteC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteSieteC2DTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="idCarga" class="java.lang.String"/>
+			<column name="idProducto" class="java.lang.String" />
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="iddivisa" class="java.lang.String" />
+			<column name="divisadescripcion" class="java.lang.String" />
+			<column name="importedivisa" class="java.math.BigDecimal" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.Integer" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="tipoclientedescripcion" class="java.lang.String" />
+			<column name="documentocliente" class="java.lang.String" />
+			<column name="sectorcliente" class="java.lang.String" />
+			<column name="clientepaisresidencia" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="tiposubyacente" class="java.lang.String" />
+			<column name="descripcionsubyacente" class="java.lang.String" />
+			<column name="fechaefectiva" class="java.util.Calendar" />
+			<column name="fechatermino" class="java.util.Calendar" />
+			<column name="tipoentrega" class="java.lang.String" />
+			<column name="preciopactado" class="java.math.BigDecimal" />
+			<column name="commoditytamanocontratounid" class="java.math.BigDecimal" />
+			<column name="commoditytamanounidmedida" class="java.lang.String" /> 
+			<column name="cdscupon" class="java.math.BigDecimal" /> 
+			<column name="cdstradeddpread" class="java.math.BigDecimal" /> 
+			<column name="cdsfrecpagomeses" class="java.lang.String" />
+			<column name="trstipooperacion" class="java.lang.String" />
+			<column name="trstasa" class="java.math.BigDecimal" /> 
+			<column name="trsfija" class="java.lang.String" />
+			<column name="trsfrepagomes" class="java.lang.String" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="estilo" class="java.lang.String" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			<column name="tipoaccion" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE7_EXCEL_C2" procedure-name="PCBCRP.SP_BCR_REPORTE7_EXCEL_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteSieteExcelC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteSieteExcelC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteSieteExcelC2DTO">
+			<column name="productodescripcion" class="java.lang.String"/>
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String"/>
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="tipooperaciondescripcion" class="java.lang.String" />
+			<column name="divisadescripcion" class="java.lang.String" />
+			<column name="importedivisa" class="java.math.BigDecimal" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			<column name="fechatermino" class="java.util.Calendar" />
+			<column name="tipoaccion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE8_LISTAR_C2" procedure-name="PCBCRP.SP_BCR_REPORTE8_LISTAR_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteOchoC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteOchoC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteOchoC2DTO">
+			<column name="id" class="java.lang.String"/>
+			<column name="codigooperacion" class="java.lang.String"/>
+			<column name="descripcion" class="java.lang.String" />
+			<column name="fecha" class="java.util.Calendar" />
+			<column name="monto" class="java.math.BigDecimal"/>
+			<column name="editar" class="java.lang.String"/>
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE8_OPERACIONES" procedure-name="PCBCRP.SP_BCR_REPORTE8_OPERACIONES">
+		<parameter class="java.lang.String" mode="IN" name="P_IDSALDODERIVADOS" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteOchoDetalleC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteOchoDetalleC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteOchoDetalleC2DTO">
+			<column name="producto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="cliente" class="java.lang.String" />
+			<column name="nombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="contratacion" class="java.lang.String" />
+			<column name="vencimiento" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="estado" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTE8_ANEXO8" procedure-name="PCBCRP.SP_BCR_REPORTE8_ANEXO8">
+		<parameter class="java.lang.String" mode="IN" name="P_IDSALDODERIVADOS" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteOchoAnexo8DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteOchoAnexo8DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.ReporteOchoAnexo8DTO">
+			<column name="producto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="cliente" class="java.lang.String" />
+			<column name="nombre" class="java.lang.String" />
+			<column name="tipodocumento" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="contratacion" class="java.lang.String" />
+			<column name="vencimiento" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="estado" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_MSD_INICIALIZAR" procedure-name="PCBCRP.SP_BCR_MSD_INICIALIZAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_MSD_CALCULOMONTOS" procedure-name="PCBCRP.SP_BCR_MSD_CALCULOMONTOS">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />		
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTECUADREDIARIO" procedure-name="PCBCRP.SP_BCR_REPORTECUADREDIARIO">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_OPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_NUMEROCUENTA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOOPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR1" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR2" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR3" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR4" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR5" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuadreDiarioDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteCuadreDiarioDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.custom.ImportesReporteCuadreDiario">
+			<column name="importeposicionpublico" class="java.math.BigDecimal"/>
+			<column name="importeposicionfinanciero" class="java.math.BigDecimal" />
+			<column name="importepublico" class="java.math.BigDecimal"/>
+			<column name="importefinanciero" class="java.math.BigDecimal" />
+			<column name="importesaldo" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_REPORTECUADREDIARIO_C2" procedure-name="PCBCRP.SP_BCR_REPORTECUADREDIARIO_C2">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_OPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_NUMEROCUENTA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOOPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR1" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR2" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR3" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR4" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALOR5" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>ReporteCuadreDiarioC2DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="ReporteCuadreDiarioC2DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.custom.ImportesReporteCuadreDiarioC2">
+			<column name="importeposicionpublico" class="java.math.BigDecimal"/>
+			<column name="importeposicionfinanciero" class="java.math.BigDecimal" />
+			<column name="importepublico" class="java.math.BigDecimal"/>
+			<column name="importefinanciero" class="java.math.BigDecimal" />
+			<column name="importesaldo" class="java.math.BigDecimal" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_CLIENTE_INSERTARCARGA" procedure-name="PCBCRP.SP_BCR_CLIENTE_INSERTARCARGA">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGO" />
+		<parameter class="java.lang.String" mode="IN" name="P_NOMBRE" />
+		<parameter class="java.lang.String" mode="IN" name="P_ENTIDAD" />
+		<parameter class="java.lang.String" mode="IN" name="P_PAISRESIDENCIA" />
+		<parameter class="java.lang.String" mode="IN" name="P_RIESGOPAIS" />
+		<parameter class="java.lang.String" mode="IN" name="P_ALTAMIRA" />
+		<parameter class="java.lang.String" mode="IN" name="P_PLAZA" />
+		<parameter class="java.lang.String" mode="IN" name="P_SECTOR" />
+		<parameter class="java.lang.String" mode="IN" name="P_NOMBRECORTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_RECHAZARCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOCLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCREACION" />
+		<parameter class="java.lang.String" mode="OUT" name="IDCLIENTEOUT_" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_UPDESTADOIRC" procedure-name="PCBCRP.SP_BCR_OPERACION_UPDESTADOIRC">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_CODIGOESTADO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOMODIFICACION" />
+	</named-stored-procedure-query>
+	
+	
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_UPDFECHAEFECT" procedure-name="PCBCRP.SP_BCR_OPERACION_UPDFECHAEFECT">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOMODIFICACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPE_DERI_GENCODREP" procedure-name="PCBCRP.SP_BCR_OPE_DERI_GENCODREP">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOMODIFICACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPE_DERI_DETALLECODDIVA" procedure-name="PCBCRP.SP_BCR_OPE_DERI_DETALLECODDIVA">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCREACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_DELOPERACION" procedure-name="PCBCRP.SP_BCR_OPERACION_DELOPERACION">
+		<parameter class="java.lang.String" mode="IN" name="P_IDCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPECARGA_UPDMSJERROR" procedure-name="PCBCRP.SP_BCR_OPECARGA_UPDMSJERROR">
+		<parameter class="java.lang.String" mode="IN" name="P_IDCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_NUMEROOPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_MENSAJEERROR" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_IDFILAARCHIVO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOMODIFICACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_CARGA_LISTARREPROCESAR" procedure-name="PCBCRP.SP_BCR_CARGA_LISTARREPROCESAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>CargaDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="CargaDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.CargaDTO">
+			<column name="id" class="java.lang.String" />			
+			<column name="tipocarga" class="java.lang.String" />
+			<column name="fecha" class="java.util.Calendar" />
+			<column name="ejecutado" class="java.lang.String" />
+			<column name="horainicio" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_CARGA_REPROCESAR" procedure-name="PCBCRP.SP_BCR_CARGA_REPROCESAR">
+		<parameter class="java.lang.String" mode="IN" name="P_IDCARGA" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_GENERACODREP1" procedure-name="PCBCRP.SP_BCR_OPERACION_GENERACODREP1">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_GENERACODREP3" procedure-name="PCBCRP.SP_BCR_OPERACION_GENERACODREP3">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_GENERAMEQUMIL" procedure-name="PCBCRP.SP_BCR_OPERACION_GENERAMEQUMIL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCREACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_GENERAREP2AD" procedure-name="PCBCRP.SP_BCR_OPERACION_GENERAREP2AD">
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_UNWIND" procedure-name="PCBCRP.SP_BCR_OPERACION_UNWIND">
+		<parameter class="java.lang.String" mode="IN" name="P_IDCARGA" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHACONTRATACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDPRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_NUMEROOPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDCLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOOPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDDIVISAENTRADA" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDDIVISASALIDA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_IMPORTEDIVISAENTRADA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_IMPORTEDIVISASALIDA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_COTIZACION" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_PUNTOSSWAP" />
+		<parameter class="java.lang.String" mode="IN" name="P_BASICA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_CAMBIOREF" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAVALOR" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAVENCIMIENTO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_PLAZO" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAEJERCICIO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CALLPUT" />
+		<parameter class="java.lang.String" mode="IN" name="P_PLAZA" />
+		<parameter class="java.lang.String" mode="IN" name="P_PAISRESIDENCIA" />
+		<parameter class="java.lang.String" mode="IN" name="P_RIESGOPAIS" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_PRIMA" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDDIVISAPRIMA" />
+		<parameter class="java.lang.String" mode="IN" name="P_OBSERVACIONES" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAALTA" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMODIFICACIONCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_OPERACIONSUSTITUYE" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHABAJA" />
+		<parameter class="java.lang.String" mode="IN" name="P_NIF" />
+		<parameter class="java.lang.String" mode="IN" name="P_INTERMEDIARIO" />
+		<parameter class="java.lang.String" mode="IN" name="P_INTERMEDIARIODESCRIPCION" />
+		<parameter class="java.lang.String" mode="IN" name="P_ESTADO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CONTRATO" />
+		<parameter class="java.lang.String" mode="IN" name="P_RESIDENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_ESTILO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOOPCION" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_HISTORICO" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOOPERACION" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_IMPORTEUSD" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOREPORTE" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASAMONEDANACIONAL" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_MONTOMONEDAEXTRAJERA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASADIFERENCIAL" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_DELTA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASAMONEDAEXTRANJERA" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDMONEDAEXTRANJERA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_MONTOPEN" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TIPOCAMBIOSPOT" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TIPOCAMBIOPACTADO" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TIPOCAMBIOVENCIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALIDACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOAGRUPACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOCLIENTE" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_IDFILAARCHIVO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_TIPOCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOACCION" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCREACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_INTENCIONCONTRATACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_PAGAIDENTIFICFRECUENCIA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_PAGATASAFIJASPREAD" />
+		<parameter class="java.lang.String" mode="IN" name="P_PAGATFIJA" />
+		<parameter class="java.lang.String" mode="IN" name="P_RECIBEIDENTIFICFRECUENCIA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_RECIBETASAFIJASPREAD" />
+		<parameter class="java.lang.String" mode="IN" name="P_RECIBETFIJA" />
+		
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_GENERACODREP3" procedure-name="PCBCRP.SP_BCR_OPERACION_GENERACODREP3">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_GENERAMEQUMIL" procedure-name="PCBCRP.SP_BCR_OPERACION_GENERAMEQUMIL">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCREACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_GENERAREP2AD" procedure-name="PCBCRP.SP_BCR_OPERACION_GENERAREP2AD">
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_TASAS_UNWIND" procedure-name="PCBCRP.SP_BCR_TASAS_UNWIND">
+		<parameter class="java.lang.String" mode="IN" name="P_IDCARGA" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHACONTRATACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDPRODUCTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_NUMEROOPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDCLIENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOOPERACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDDIVISAENTRADA" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDDIVISASALIDA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_IMPORTEDIVISAENTRADA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_IMPORTEDIVISASALIDA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_COTIZACION" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_PUNTOSSWAP" />
+		<parameter class="java.lang.String" mode="IN" name="P_BASICA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_CAMBIOREF" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAVALOR" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAVENCIMIENTO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_PLAZO" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAEJERCICIO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CALLPUT" />
+		<parameter class="java.lang.String" mode="IN" name="P_PLAZA" />
+		<parameter class="java.lang.String" mode="IN" name="P_PAISRESIDENCIA" />
+		<parameter class="java.lang.String" mode="IN" name="P_RIESGOPAIS" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_PRIMA" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDDIVISAPRIMA" />
+		<parameter class="java.lang.String" mode="IN" name="P_OBSERVACIONES" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAALTA" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMODIFICACIONCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_OPERACIONSUSTITUYE" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHABAJA" />
+		<parameter class="java.lang.String" mode="IN" name="P_NIF" />
+		<parameter class="java.lang.String" mode="IN" name="P_INTERMEDIARIO" />
+		<parameter class="java.lang.String" mode="IN" name="P_INTERMEDIARIODESCRIPCION" />
+		<parameter class="java.lang.String" mode="IN" name="P_ESTADO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CONTRATO" />
+		<parameter class="java.lang.String" mode="IN" name="P_RESIDENTE" />
+		<parameter class="java.lang.String" mode="IN" name="P_ESTILO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOOPCION" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_HISTORICO" />
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAMOVIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOOPERACION" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_IMPORTEUSD" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOREPORTE" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASAMONEDANACIONAL" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_MONTOMONEDAEXTRAJERA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASADIFERENCIAL" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_DELTA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASAMONEDAEXTRANJERA" />
+		<parameter class="java.lang.String" mode="IN" name="P_IDMONEDAEXTRANJERA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_MONTOPEN" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TIPOCAMBIOSPOT" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TIPOCAMBIOPACTADO" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TIPOCAMBIOVENCIMIENTO" />
+		<parameter class="java.lang.String" mode="IN" name="P_VALIDACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOAGRUPACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOCLIENTE" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_IDFILAARCHIVO" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_TIPOCARGA" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOACCION" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOCREACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_INTENCIONCONTRATACION" />
+		<parameter class="java.lang.String" mode="IN" name="P_PAGAIDENTIFICFRECUENCIA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_PAGATASAFIJASPREAD" />
+		<parameter class="java.lang.String" mode="IN" name="P_PAGATFIJA" />
+		<parameter class="java.lang.String" mode="IN" name="P_RECIBEIDENTIFICFRECUENCIA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_RECIBETASAFIJASPREAD" />
+		<parameter class="java.lang.String" mode="IN" name="P_RECIBETFIJA" />
+		
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_UPDTASAS" procedure-name="PCBCRP.SP_BCR_OPERACION_UPDTASAS">
+		<parameter class="java.lang.String" mode="IN" name="P_IDOPERACION" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASAMONEDANACIONAL" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASAMONEDAEXTRANJERA" />
+		<parameter class="java.math.BigDecimal" mode="IN" name="P_TASADIFERENCIAL" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_SALDOCONTABLE_UPDESTGRP" procedure-name="PCBCRP.SP_BCR_SALDOCONTABLE_UPDESTGRP">
+		<parameter class="java.util.Calendar" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.Integer" mode="IN" name="P_CODIGOESTADO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOMODIFICACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_TASAS_DELFECHAPROCESO" procedure-name="PCBCRP.SP_BCR_TASAS_DELFECHAPROCESO">
+		<parameter class="java.util.Calendar" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOMODIFICACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACIONCARGA_LSTERROR" procedure-name="PCBCRP.SP_BCR_OPERACIONCARGA_LSTERROR">
+		<parameter class="java.lang.String" mode="IN" name="P_IDCARGA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>OperacioncargaTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+	<sql-result-set-mapping name="OperacioncargaTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.OperacioncargaTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="idcarga" class="java.lang.String" />
+			<column name="fechacarga" class="java.util.Calendar" />
+			<column name="idfilaarchivo" class="java.lang.Integer" />
+			<column name="fechacontratacion" class="java.lang.String" />
+			<column name="producto" class="java.lang.String" />	
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigocliente" class="java.lang.String" />
+			<column name="nombrecliente" class="java.lang.String" />
+			<column name="divisaentrada" class="java.lang.String" />
+			<column name="divisasalida" class="java.lang.String" />	
+			<column name="importedivisaentrada" class="java.lang.String" />
+			<column name="importedivisasalida" class="java.lang.String" />
+			<column name="cotizacion" class="java.lang.String" />
+			<column name="puntosswap" class="java.lang.String" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.lang.String" />
+			<column name="fechavalor" class="java.lang.String" />
+			<column name="fechavencimiento" class="java.lang.String" />
+			<column name="plazo" class="java.lang.String" />
+			<column name="fechaejercicio" class="java.lang.String" />	
+			<column name="callput" class="java.lang.String" />
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="paisriesgo" class="java.lang.String" />
+			<column name="prima" class="java.lang.String" />
+			<column name="divisaprima" class="java.lang.String" />
+			<column name="observacioncarga" class="java.lang.String" />
+			<column name="fechaalta" class="java.lang.String" />
+			<column name="fechamodificacioncarga" class="java.lang.String" />
+			<column name="operacionsustituye" class="java.lang.String" />	
+			<column name="fechabaja" class="java.lang.String" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />
+			<column name="usuario" class="java.lang.String" />
+			<column name="nombreusuario" class="java.lang.String" />
+			<column name="estado" class="java.lang.String" />
+			<column name="fechafixing" class="java.lang.String" />
+			<column name="tasapen" class="java.lang.String" />
+			<column name="tasausd" class="java.lang.String" />	
+			<column name="delta" class="java.lang.String" />
+			<column name="basicaauxiliar" class="java.lang.String" />
+			<column name="tipopperacionauxiliar" class="java.lang.String" />
+			<column name="mensajeerror" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="estadooperaciondesc" class="java.lang.String" />
+			<column name="tipooperaciondesc" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_CARGA_LISTAR" procedure-name="PCBCRP.SP_BCR_CARGA_LISTAR">
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>CargaTableDTODTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+	<sql-result-set-mapping name="CargaTableDTODTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.CargaTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="creadoPor" class="java.lang.String" />
+			<column name="actualizadoPor" class="java.lang.String" />
+			<column name="fechaCreacion" class="java.util.Calendar" />
+			<column name="fechaModificacion" class="java.util.Calendar" />
+			<column name="codigoestado" class="java.lang.Integer" />
+			<column name="condicion" class="java.lang.Boolean" />
+			<column name="tipocarga" class="java.lang.String" />
+			<column name="rutaarchivo" class="java.lang.String" />
+			<column name="fecha" class="java.util.Calendar" />
+			<column name="nombrearchivo" class="java.lang.String" />
+			<column name="ejecutado" class="java.lang.String" />
+			<column name="horainicio" class="java.lang.String" />
+			<column name="horafin" class="java.lang.String" />
+			<column name="totalreg" class="java.lang.Integer" />
+			<column name="totalcargado" class="java.lang.Integer" />
+			<column name="notaerror" class="java.lang.String" />
+			<column name="codigoinicio" class="java.lang.String" />	
+			<column name="codigofinal" class="java.lang.String" />
+			<column name="anio" class="java.lang.String" />
+			<column name="mes" class="java.lang.String" />
+			<column name="tipo" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="tipocargadesc" class="java.lang.String" />
+			<column name="condiciondesc" class="java.lang.String" />
+			<column name="ejecutadodesc" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_OPERACION_GENERAIRC" procedure-name="PCBCRP.SP_BCR_OPERACION_GENERAIRC">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGO" />
+		<parameter class="java.lang.String" mode="IN" name="P_NROOPERACION" />
+		<parameter class="java.lang.String" mode="OUT" name="NROOPERACIONIRC_" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_CORREL_GENCOMPUESTO" procedure-name="PCBCRP.SP_BCR_CORREL_GENCOMPUESTO">
+		<parameter class="java.lang.String" mode="IN" name="P_NOMBRECORRELATIVO" />
+		<parameter class="java.lang.String" mode="OUT" name="VALORCORRELATIVO_" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_TASINT_UPDFECEFECT_IRD" procedure-name="PCBCRP.SP_BCR_TASINT_UPDFECEFECT_IRD">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_USUARIOMODIFICACION" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_TASAINTERES_GENERAIRD" procedure-name="PCBCRP.SP_BCR_TASAINTERES_GENERAIRD">
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGO" />
+		<parameter class="java.lang.String" mode="IN" name="P_NROOPERACION" />
+		<parameter class="java.lang.String" mode="OUT" name="NROOPERACIONIRD_" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_TASAINT_GENCODREPIRD" procedure-name="PCBCRP.SP_BCR_TASAINT_GENCODREPIRD">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+	</named-stored-procedure-query>
+	
+	
+	<named-stored-procedure-query name="SP_BCR_FERIADO_LIST_OPER" procedure-name="PCBCRP.SP_BCR_FERIADO_LIST_OPER">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHA" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>OperacionFerTableDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="OperacionFerTableDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.OperacionTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="idcarga" class="java.lang.String" />
+			<column name="fechacontratacion" class="java.util.Calendar" />
+			<column name="idproducto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="idcliente" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="iddivisaentrada" class="java.lang.String" />
+			<column name="iddivisasalida" class="java.lang.String" />
+			<column name="importedivisaentrada" class="java.math.BigDecimal" />
+			<column name="importedivisasalida" class="java.math.BigDecimal" />
+			<column name="cotizacion" class="java.math.BigDecimal" />
+			<column name="puntosswap" class="java.math.BigDecimal" />
+			<column name="basica" class="java.lang.String" />
+			<column name="cambioref" class="java.math.BigDecimal" />
+			<column name="fechavalor" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="plazo" class="java.lang.Integer" />
+			<column name="fechaejercicio" class="java.util.Calendar" />
+			<column name="callput" class="java.lang.String" /> 
+			<column name="plaza" class="java.lang.String" />
+			<column name="paisresidencia" class="java.lang.String" />
+			<column name="riesgopais" class="java.lang.String" />	
+			<column name="prima" class="java.math.BigDecimal" />
+			<column name="iddivisaprima" class="java.lang.String" />
+			<column name="observaciones" class="java.lang.String" />
+			<column name="fechaalta" class="java.util.Calendar" />
+			<column name="fechamodificacioncarga" class="java.util.Calendar" />
+			<column name="operacionsustituye" class="java.lang.String" />
+			<column name="fechabaja" class="java.util.Calendar" />
+			<column name="nif" class="java.lang.String" />
+			<column name="intermediario" class="java.lang.String" />
+			<column name="intermediariodescripcion" class="java.lang.String" />	
+			<column name="estado" class="java.lang.String" />
+			<column name="contrato" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="estilo" class="java.lang.String" />
+			<column name="tipoopcion" class="java.lang.String" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="historico" class="java.lang.Integer" />
+			<column name="fechamovimiento" class="java.util.Calendar" />
+			<column name="usuariocarga" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="importeusd" class="java.math.BigDecimal" />
+			<column name="codigoreporte" class="java.lang.String" />
+			<column name="tasamonedanacional" class="java.math.BigDecimal" />
+			<column name="montomonedaextranjera" class="java.math.BigDecimal" />
+			<column name="tasadiferencial" class="java.math.BigDecimal" />
+			<column name="delta" class="java.math.BigDecimal" />
+			<column name="tasamonedaextranjera" class="java.math.BigDecimal" />
+			<column name="idmonedaextranjera" class="java.lang.String" />
+			<column name="montopen" class="java.math.BigDecimal" />
+			<column name="tipocambiospot" class="java.math.BigDecimal" />
+			<column name="tipocambiopactado" class="java.math.BigDecimal" />
+			<column name="tipocambiovencimiento" class="java.math.BigDecimal" />
+			<column name="validacion" class="java.lang.String" />
+			<column name="codigoagrupacion" class="java.lang.String" />
+			<column name="tipocliente" class="java.lang.String" />
+			<column name="recibetasafijaspread" class="java.math.BigDecimal" />
+			<column name="recibetfija" class="java.lang.String" />
+			<column name="recibeidentificadorfrecuencia" class="java.lang.String" />
+			<column name="pagatasafijaspread" class="java.math.BigDecimal" />
+			<column name="pagatfija" class="java.lang.String" />
+			<column name="pagaidentificadorfrecuencia" class="java.lang.String" />
+			<column name="volatilidad" class="java.math.BigDecimal" />
+			<column name="intencioncontratacion" class="java.lang.String" />
+			<column name="tipoaccion" class="java.lang.String" />
+			<column name="productocodigo" class="java.lang.String" />
+			<column name="clientecodigo" class="java.lang.String" />
+			<column name="clientenombre" class="java.lang.String" />
+			<column name="sectorCliente" class="java.lang.String" />
+			<column name="divisaentradacodigo" class="java.lang.String" />
+			<column name="divisasalidacodigo" class="java.lang.String" />
+			<column name="tipooperaciondesc" class="java.lang.String" />
+			<column name="tipoclientedesc" class="java.lang.String" />
+			<column name="divisaprimacodigo" class="java.lang.String" />
+			<column name="divisamonedaextcodigo" class="java.lang.String" />
+			<column name="tipoentrega" class="java.lang.String" />
+			
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_TRANSACTION" procedure-name="PCBCRP.SP_BCR_TRANSACTION">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_TIPOPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>TransactionDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="TransactionDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.TransactionDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="fechaproceso" class="java.util.Calendar" />
+			<column name="tipoproceso" class="java.lang.String" />
+			<column name="tabla" class="java.lang.String" />
+			<column name="inicia" class="java.util.Calendar" />
+			<column name="termina" class="java.util.Calendar" />
+			<column name="procesosTotales" class="java.lang.Integer" />
+			<column name="procesosactuales" class="java.lang.Integer" />
+			<column name="descripcion" class="java.lang.String" />
+			<column name="estado" class="java.lang.Integer" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_ANEXO_OCHO_LISTAR" procedure-name="PCBCRP.SP_BCR_ANEXO_OCHO_LISTAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>AnexoOchoListarDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="AnexoOchoListarDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.table.CuadreAnexoOchoTableDTO">
+			<column name="id" class="java.lang.String" />
+			<column name="fuente" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="montoposicioncambiaria" class="java.lang.String" />
+			<column name="montoanexo" class="java.lang.String" />
+			<column name="diferencia" class="java.lang.String" />
+			<column name="progreso" class="java.lang.String" />
+			<column name="descripcion" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_ANEXO_OCHO_DETALLE" procedure-name="PCBCRP.SP_BCR_ANEXO_OCHO_DETALLE">
+		<parameter class="java.lang.String" mode="IN" name="P_ID_CUADRE_ANEXO_OCHO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>DetalleOchoAnexo8DTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+	
+	<sql-result-set-mapping	name="DetalleOchoAnexo8DTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.report.DetalleAnexoOchoExcelDTO">
+			<column name="fuente" class="java.lang.String" />
+			<column name="producto" class="java.lang.String" />
+			<column name="numerooperacion" class="java.lang.String" />
+			<column name="codigooperacion" class="java.lang.String" />
+			<column name="montoposicioncambiaria" class="java.math.BigDecimal" />
+			<column name="montoanexo" class="java.math.BigDecimal" />
+			<column name="diferencia" class="java.math.BigDecimal" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="monedaentrega" class="java.lang.String" />
+			<column name="monedarecibe" class="java.lang.String" />
+			<column name="fechainicio" class="java.util.Calendar" />
+			<column name="fechavencimiento" class="java.util.Calendar" />
+			<column name="cliente" class="java.lang.String" />
+			<column name="residente" class="java.lang.String" />
+			<column name="pais" class="java.lang.String" />
+			<column name="financiero" class="java.lang.String" />
+			<column name="tipotasainteresrecibe" class="java.lang.String" />
+			<column name="tipotasainteresentrega" class="java.lang.String" />
+			<column name="moneda" class="java.lang.String" />
+			<column name="tasainteresrecibe" class="java.math.BigDecimal" />
+			<column name="tasainteresentrega" class="java.math.BigDecimal" />
+			<column name="observacion" class="java.lang.String" />
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+	<named-stored-procedure-query name="SP_BCR_ANEXO_OCHO_INICIALIZAR" procedure-name="PCBCRP.SP_BCR_ANEXO_OCHO_INICIALIZAR">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_ANEXO_OCHO_ELIMINARDET" procedure-name="PCBCRP.SP_BCR_ANEXO_OCHO_ELIMINARDET">
+		<parameter class="java.lang.String" mode="IN" name="P_ID_CUADRE_ANEXO_OCHO" />
+	</named-stored-procedure-query>
+	
+	<named-stored-procedure-query name="SP_BCR_ANEXO_OCHO_PARAMETROS" procedure-name="PCBCRP.SP_BCR_ANEXO_OCHO_PARAMETROS">
+		<parameter class="java.util.Date" mode="IN" name="P_FECHAPROCESO" />
+		<parameter class="java.lang.String" mode="IN" name="P_CODIGOARCHIVO" />
+		<parameter class="java.lang.Class" mode="REF_CURSOR" name="CURSOR_" />
+		<result-set-mapping>AnexoOxhoParametrosDTOMapping</result-set-mapping>
+	</named-stored-procedure-query>
+
+
+	<sql-result-set-mapping	name="AnexoOxhoParametrosDTOMapping">
+		<constructor-result	target-class="pe.grupobbva.alcon.mantenimiento.dto.ParametrosAnexoOchoDTO">
+			<column name="idcuadreanexoocho" class="java.lang.String" />
+			<column name="fuente" class="java.lang.String" />
+			<column name="tipooperacion" class="java.lang.String" />
+			<column name="reporte" class="java.lang.Integer" />
+			<column name="codigo" class="java.lang.String" />	
+			<column name="codigoproducto" class="java.lang.String" />	
+			<column name="codigoarchivo" class="java.lang.String" />
+			<column name="idposicioncambiaria" class="java.lang.String" />	
+			<column name="idsaldoderivados" class="java.lang.String" />		
+		</constructor-result>
+	</sql-result-set-mapping>
+	
+</entity-mappings>

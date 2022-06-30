@@ -1,0 +1,233 @@
+create or replace PROCEDURE          "SP_BCR_REPORTE8_OPERACIONES" (
+P_IDSALDODERIVADOS  	IN VARCHAR2,
+P_FECHA                 IN DATE,
+P_TIPOPROCESO           IN VARCHAR2,
+CURSOR_ 	OUT SYS_REFCURSOR
+)
+
+AS
+
+V_CODIGOOPERACION       VARCHAR2(4);
+
+BEGIN
+    SELECT CODIGOOPERACION INTO V_CODIGOOPERACION FROM SALDO_DERIVADOS WHERE ID = P_IDSALDODERIVADOS;
+
+    IF V_CODIGOOPERACION = '0603' THEN
+        OPEN CURSOR_ FOR
+			SELECT
+				ope.PRODUCTO,
+				ti.NUMEROOPERACION AS NUMEROOPERACION,
+				ti.CODIGOREPORTE ,
+				ope.CLIENTE,
+				ope.NOMBRE,
+				ope.TIPODOCUMENTO,
+				ti.TIPOCLIENTE,
+				ti.VALIDACION,
+				ti.FECHACONTRATACION AS CONTRATACION,
+				ti.FECHAVENCIMIENTO AS VENCIMIENTO,
+				ti.IMPORTEUSD,
+				ti.ESTADO
+			FROM
+				TASA_INTERES ti
+					INNER JOIN (
+									SELECT
+										p.CODIGO AS PRODUCTO,
+										o.NUMEROOPERACION AS NUMEROOPERACION,
+										o.CODIGOREPORTE ,
+										c.CODIGO AS CLIENTE,
+										c.NOMBRE,
+										c.TIPODOCUMENTO,
+										o.TIPOCLIENTE,
+										o.VALIDACION,
+										o.FECHACONTRATACION AS CONTRATACION,
+										o.FECHAVENCIMIENTO AS VENCIMIENTO,
+										o.IMPORTEUSD
+									FROM TASA_INTERES o
+										INNER JOIN PRODUCTO p ON p.ID = o.ID_PRODUCTO
+										INNER JOIN CLIENTE c ON c.ID = o.ID_CLIENTE
+										INNER JOIN DIVISA de ON de.ID = o.IDDIVISAENTRADA
+										INNER JOIN DIVISA ds ON ds.ID = o.IDDIVISASALIDA
+										LEFT JOIN DIVISA dp ON dp.ID = o.IDDIVISAPRIMA
+										LEFT JOIN DIVISA dex ON dex.ID = o.IDMONEDAEXTRANJERA
+									WHERE
+										o.ESTADO <> 'A' --Anulada
+										AND o.CODIGOESTADO = 1
+										AND TO_DATE(TO_CHAR(o.FECHAMOVIMIENTO, 'dd/mm/yyyy')) <= TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+										--QUITO LAS VENCIDAS
+										AND TO_DATE(TO_CHAR(o.FECHAVENCIMIENTO, 'dd/mm/yyyy')) > TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+										AND o.TIPOPROCESO = 'D'
+										AND o.ID_PRODUCTO = (SELECT p.ID FROM PRODUCTO p WHERE p.CODIGO = 'IRD') --@i_idProductoIRD
+
+									MINUS
+
+									SELECT
+										p.CODIGO AS PRODUCTO,
+										o.NUMEROOPERACION AS NUMEROOPERACION,
+										o.CODIGOREPORTE ,
+										c.CODIGO AS CLIENTE,
+										c.NOMBRE,
+										c.TIPODOCUMENTO,
+										o.TIPOCLIENTE,
+										o.VALIDACION,
+										o.FECHACONTRATACION AS CONTRATACION,
+										o.FECHAVENCIMIENTO AS VENCIMIENTO,
+										o.IMPORTEUSD
+									FROM TASA_INTERES o
+										INNER JOIN PRODUCTO p ON p.ID = o.ID_PRODUCTO
+										INNER JOIN CLIENTE c ON c.ID = o.ID_CLIENTE
+										INNER JOIN DIVISA de ON de.ID = o.IDDIVISAENTRADA
+										INNER JOIN DIVISA ds ON ds.ID = o.IDDIVISASALIDA
+										LEFT JOIN DIVISA dp ON dp.ID = o.IDDIVISAPRIMA
+										LEFT JOIN DIVISA dex ON dex.ID = o.IDMONEDAEXTRANJERA
+									WHERE
+										o.ESTADO = 'A' --Anulada
+										AND o.CODIGOESTADO = 1
+										AND TO_DATE(TO_CHAR(o.FECHAMOVIMIENTO, 'dd/mm/yyyy')) <= TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+										--QUITO LAS VENCIDAS
+										AND TO_DATE(TO_CHAR(o.FECHAVENCIMIENTO, 'dd/mm/yyyy')) > TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+										AND o.TIPOPROCESO = 'D'
+										AND o.ID_PRODUCTO = (SELECT p.ID FROM PRODUCTO p WHERE p.CODIGO = 'IRD') --@i_idProductoIRD
+								) ope
+										ON ope.NUMEROOPERACION = ti.NUMEROOPERACION
+			ORDER BY
+				ti.NUMEROOPERACION, ti.CODIGOREPORTE ASC;
+				
+	ELSIF V_CODIGOOPERACION = '0604' THEN
+        OPEN CURSOR_ FOR
+			SELECT
+				ope.PRODUCTO,
+				ti.NUMEROOPERACION AS NUMEROOPERACION,
+				ti.CODIGOREPORTE ,
+				ope.CLIENTE,
+				ope.NOMBRE,
+				ope.TIPODOCUMENTO,
+				ti.TIPOCLIENTE,
+				ti.VALIDACION,
+				ti.FECHACONTRATACION AS CONTRATACION,
+				ti.FECHAVENCIMIENTO AS VENCIMIENTO,
+				ti.IMPORTEUSD,
+				ti.ESTADO
+			FROM
+				TASA_INTERES ti
+					INNER JOIN (
+									SELECT
+										p.CODIGO AS PRODUCTO,
+										o.NUMEROOPERACION AS NUMEROOPERACION,
+										o.CODIGOREPORTE ,
+										c.CODIGO AS CLIENTE,
+										c.NOMBRE,
+										c.TIPODOCUMENTO,
+										o.TIPOCLIENTE,
+										o.VALIDACION,
+										o.FECHACONTRATACION AS CONTRATACION,
+										o.FECHAVENCIMIENTO AS VENCIMIENTO,
+										o.IMPORTEUSD
+									FROM TASA_INTERES o
+										INNER JOIN PRODUCTO p ON p.ID = o.ID_PRODUCTO
+										INNER JOIN CLIENTE c ON c.ID = o.ID_CLIENTE
+										INNER JOIN DIVISA de ON de.ID = o.IDDIVISAENTRADA
+										INNER JOIN DIVISA ds ON ds.ID = o.IDDIVISASALIDA
+										LEFT JOIN DIVISA dp ON dp.ID = o.IDDIVISAPRIMA
+										LEFT JOIN DIVISA dex ON dex.ID = o.IDMONEDAEXTRANJERA
+									WHERE
+										o.ESTADO <> 'A' --Anulada
+										AND o.CODIGOESTADO = 1
+										AND TO_DATE(TO_CHAR(o.FECHAMOVIMIENTO, 'dd/mm/yyyy')) <= TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+										--QUITO LAS VENCIDAS
+										AND TO_DATE(TO_CHAR(o.FECHAVENCIMIENTO, 'dd/mm/yyyy')) > TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+										AND o.TIPOPROCESO = 'D'
+										AND o.ID_PRODUCTO = (SELECT p.ID FROM PRODUCTO p WHERE p.CODIGO = 'IRCM') --@i_idProductoIRCM
+
+									MINUS
+
+									SELECT
+										p.CODIGO AS PRODUCTO,
+										o.NUMEROOPERACION AS NUMEROOPERACION,
+										o.CODIGOREPORTE ,
+										c.CODIGO AS CLIENTE,
+										c.NOMBRE,
+										c.TIPODOCUMENTO,
+										o.TIPOCLIENTE,
+										o.VALIDACION,
+										o.FECHACONTRATACION AS CONTRATACION,
+										o.FECHAVENCIMIENTO AS VENCIMIENTO,
+										o.IMPORTEUSD
+									FROM TASA_INTERES o
+										INNER JOIN PRODUCTO p ON p.ID = o.ID_PRODUCTO
+										INNER JOIN CLIENTE c ON c.ID = o.ID_CLIENTE
+										INNER JOIN DIVISA de ON de.ID = o.IDDIVISAENTRADA
+										INNER JOIN DIVISA ds ON ds.ID = o.IDDIVISASALIDA
+										LEFT JOIN DIVISA dp ON dp.ID = o.IDDIVISAPRIMA
+										LEFT JOIN DIVISA dex ON dex.ID = o.IDMONEDAEXTRANJERA
+									WHERE
+										o.ESTADO = 'A' --Anulada
+										AND o.CODIGOESTADO = 1
+										AND TO_DATE(TO_CHAR(o.FECHAMOVIMIENTO, 'dd/mm/yyyy')) <= TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+										--QUITO LAS VENCIDAS
+										AND TO_DATE(TO_CHAR(o.FECHAVENCIMIENTO, 'dd/mm/yyyy')) > TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+										AND o.TIPOPROCESO = 'D'
+										AND o.ID_PRODUCTO = (SELECT p.ID FROM PRODUCTO p WHERE p.CODIGO = 'IRCM') --@i_idProductoIRCM
+								) ope
+										ON ope.NUMEROOPERACION = ti.NUMEROOPERACION
+			ORDER BY
+				ti.NUMEROOPERACION, ti.CODIGOREPORTE ASC;			
+
+    ELSIF V_CODIGOOPERACION = '0706' THEN
+        OPEN CURSOR_ FOR
+            SELECT
+                p.CODIGO AS PRODUCTO,
+                o.NUMEROOPERACION AS NUMEROOPERACION,
+                o.CODIGOREPORTE ,
+                c.CODIGO AS CLIENTE,
+                c.NOMBRE,
+                c.TIPODOCUMENTO,
+                o.TIPOCLIENTE,
+                '' AS  VALIDACION,
+                o.FECHAREPORTE AS CONTRATACION,
+                o.FECHATERMINO AS VENCIMIENTO,
+                o.IMPORTEUSD,
+                '' AS ESTADO
+
+            FROM OPERACION_DERIVADO o
+                INNER JOIN PRODUCTO p ON p.ID = o.ID_PRODUCTO
+                INNER JOIN CLIENTE c ON c.ID = o.ID_CLIENTE
+                INNER JOIN DIVISA d ON d.ID = o.IDDIVISA
+            WHERE
+                o.CODIGOESTADO = 1
+                AND TO_DATE(TO_CHAR(o.FECHAMOVIMIENTO, 'dd/mm/yyyy')) <= TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+                --QUITO LAS VENCIDAS
+                AND TO_DATE(TO_CHAR(o.FECHATERMINO, 'dd/mm/yyyy')) > TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+                AND o.TIPOPROCESO = 'D'
+                AND o.ID_PRODUCTO IN (SELECT p.ID FROM PRODUCTO p WHERE p.CODIGO IN ('ODIV'))
+                AND c.CODIGO NOT IN ('PER013597')
+                ORDER BY o.NUMEROOPERACION, o.CODIGOREPORTE ASC;
+
+    ELSIF V_CODIGOOPERACION = '0799' THEN
+        OPEN CURSOR_ FOR
+            SELECT
+                p.CODIGO AS PRODUCTO,
+                o.NUMEROOPERACION AS NUMEROOPERACION,
+                o.CODIGOREPORTE ,
+                c.CODIGO AS CLIENTE,
+                c.NOMBRE,
+                c.TIPODOCUMENTO,
+                o.TIPOCLIENTE,
+                '' AS VALIDACION,
+                o.FECHAREPORTE AS CONTRATACION,
+                o.FECHATERMINO AS VENCIMIENTO,
+                o.IMPORTEUSD,
+                '' AS ESTADO
+            FROM OPERACION_DERIVADO o
+                INNER JOIN PRODUCTO p ON p.ID = o.ID_PRODUCTO
+                INNER JOIN CLIENTE c ON c.ID = o.ID_CLIENTE
+                INNER JOIN DIVISA d ON d.ID = o.IDDIVISA
+            WHERE
+                o.CODIGOESTADO = 1
+                AND TO_DATE(TO_CHAR(o.FECHAMOVIMIENTO, 'dd/mm/yyyy')) <= TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+                --QUITO LAS VENCIDAS
+                AND TO_DATE(TO_CHAR(o.FECHATERMINO, 'dd/mm/yyyy')) > TO_DATE(TO_CHAR(P_FECHA, 'dd/mm/yyyy'))
+                AND o.TIPOPROCESO = 'D'
+                AND o.ID_PRODUCTO IN (SELECT p.ID FROM PRODUCTO p WHERE p.CODIGO IN ('OTO'))
+                ORDER BY o.NUMEROOPERACION, o.CODIGOREPORTE ASC;
+    END IF;
+END;
